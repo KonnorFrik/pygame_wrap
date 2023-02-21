@@ -1,13 +1,14 @@
-import math
-
-
+# TODO write a add/sub/mul/div methods. Make a x y a numpy array
 class BasePosition:
     """Hold a x and y val
         Represent a position of object"""
 
-    def __init__(self, x: int, y: int):
+    def __init__(self, x: int = None, y: int = None):
         self.x = x
         self.y = y
+
+    def __str__(self):
+        return f"x={self.x} y={self.y}"
 
 
 class BaseObject:
@@ -18,7 +19,9 @@ class BaseObject:
                  y: int = 0,
                  width: int = 0,
                  height: int = 0,
-                 border: int = 0):
+                 border: int = 0,
+                 *args,
+                 **kwargs):
 
         self.screen = screen
         self.color = color
@@ -44,24 +47,4 @@ class BaseObject:
 
 
 
-class Angle(int):
-    def __init__(self, degrees: int, *a, **kw):
-        super().__init__()
-        self.angle = degrees
-
-
-    def __add__(self, other: int):
-        if (self.angle + other) > 360:
-            return Angle(360 - self.angle)
-
-        else:
-            return Angle(self.angle + other)
-
-
-    def __sub__(self, other: int):
-        if (self.angle - other) < 0:
-            return  Angle(360 - self.angle)
-
-        else:
-            return Angle(self.angle - other)
 
