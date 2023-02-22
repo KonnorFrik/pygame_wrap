@@ -19,13 +19,9 @@ def length_by_points(x1: int, y1: int, x2: int, y2: int) -> int:
 def angle_by_point(x1: int, y1: int, x2: int, y2: int) -> int | float:
     try:
         result = math.degrees(math.atan((y2-y1)/(x2-x1)))
-        print("angl res:", result)
 
     except ZeroDivisionError:
         result = 90
-        print("angl res err:", result)
 
-    result += 90
-    print("angl res exit:", result)
     return result
 
