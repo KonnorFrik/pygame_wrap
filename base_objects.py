@@ -148,8 +148,16 @@ class Vector(object):
         #return deepcopy(self)
 
 
+    def update_length(self):
+        self.length = mymath.length_by_points(x1=self.pos.x,
+                                              y1=self.pos.y,
+                                              x2=self.end_pos.x,
+                                              y2=self.end_pos.y)
+
+
     def __add__(self, other):
         copy = self.copy()
+
         if isinstance(other, int):
             copy.length += other
             copy._calc_endpoint()
@@ -163,10 +171,7 @@ class Vector(object):
             copy.end_pos.x = other.end_pos.x
             copy.end_pos.y = other.end_pos.y
 
-            copy.length = mymath.length_by_points(x1=copy.pos.x,
-                                                 y1=copy.pos.y,
-                                                 x2=copy.end_pos.x,
-                                                 y2=copy.end_pos.y)
+            copy.update_length()
 
             copy.angle.set(mymath.angle_by_point(x1=copy.pos.x,
                                                  y1=copy.pos.y,
