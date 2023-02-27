@@ -243,3 +243,24 @@ class VectorLine(Vector, Line):
         super(Vector, self).__init__(*a, **kw)
         super().__init__(*a, **kw)
 
+
+class BaseSprite(iobjects.IBaseSprite):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+        self.image = None
+
+        if self.filename:
+            self.image = pg.image.load(self.filename).convert_alpha()
+
+        else:
+            self.image = pg.Surface((self.width, self.height))
+
+        self.rect = self.image.get_rect(x=self.x, y=self.y)
+
+
+    def render(self):
+        """Draw object on screen"""
+        self.screen.blit(self.image, self.rect)
+
+
