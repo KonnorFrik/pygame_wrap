@@ -11,6 +11,10 @@ class Pool:
         """Call refresh for every object in pool"""
         ...
 
+    def __len__(self):
+        """Return count of objects in"""
+        ...
+
 
 class ListPool(Pool):
     """A simple pool based on list for objects BaseObject
@@ -29,4 +33,6 @@ class ListPool(Pool):
         for obj in self.objects:
             obj.refresh()
 
+    def __len__(self):
+        return len(self.objects)
 # make dict based pool
