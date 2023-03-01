@@ -12,6 +12,8 @@ class Game:
         self.loop_args = None
         self.loop_kwargs = None
 
+        self.screen_color = settings.DEFAULT_SCREEN_COLOR
+
         self.post_init()
 
     def post_init(self):
