@@ -76,7 +76,7 @@ class MultiHandler(Handler):
 
         self.keys[key].append(func)
         self.func_kwargs[(key, func)] = kw
-        print("keys", self.keys)
+        #print("keys", self.keys)
 
 
     def _register_event(self, event_type, key, func, **kw):
@@ -86,7 +86,7 @@ class MultiHandler(Handler):
         self.event_keys[(event_type, key)].append(func)
 
         self.event_func_kwargs[(event_type, key, func)] = kw
-        print("event keys", self.event_keys)
+        #print("event keys", self.event_keys)
 
 
     def register(self, mode: str, key, func, event_type = None, **kw):
